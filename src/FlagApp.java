@@ -3,30 +3,34 @@ import java.awt.*;
 
 public class FlagApp {
     public static void main(String[] args) {
-        // Создание графического интерфейса
+        // Создание главного окна
         JFrame frame = new JFrame("Флаг");
         frame.setSize(300, 200);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Создание компонента для отображения флага Польши
+        // Создание панели для отображения флага
         JPanel flagPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
 
-                // Рисование флага Польши
+                // Задание цвета фона (белый)
                 g.setColor(Color.WHITE);
+                // Заполнение прямоугольной области фона
                 g.fillRect(0, 0, getWidth(), getHeight());
 
+                // Задание цвета полосы (красный)
                 g.setColor(Color.RED);
-                g.fillRect(50, 30, 200, 20);
-                g.fillRect(120, 30, 20, 150);
+                // Рисование красной полосы с вертикальными координатами
+                g.fillRect(0, 75, getWidth(), getHeight());
             }
         };
 
-        // Добавление компонента на форму
-        frame.add(flagPanel);
-        frame.setLayout(null);
+        // Установка менеджера компоновки для главного окна
+        frame.setLayout(new BorderLayout());
+        // Добавление панели с флагом в центральную часть главного окна
+        frame.add(flagPanel, BorderLayout.CENTER);
+        // Установка видимости главного окна
         frame.setVisible(true);
     }
 }
